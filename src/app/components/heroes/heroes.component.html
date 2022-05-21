@@ -1,0 +1,8 @@
+<div class="flex">
+  <app-filters (onClick)="onFilterSubmit($event)" class="w-1/3"></app-filters>
+  <app-table
+    [heroes]="heroes"
+    [searchName]="searchName"
+    class="w-2/3"
+  ></app-table>
+</div>

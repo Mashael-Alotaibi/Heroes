@@ -1,0 +1,39 @@
+<h1>{{ "Filters" | uppercase }}</h1>
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="filterForm"
+  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+>
+  <div *ngFor="let formItem of dynamicFormFields" class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2">{{
+      formItem.title
+    }}</label>
+    <div [ngSwitch]="formItem.type">
+      <input
+        *ngSwitchCase="'text'"
+        type="text"
+        [formControlName]="formItem.title"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+      <select *ngSwitchCase="'dropdown'" [formControlName]="formItem.title">
+        <option selected [ngValue]="null">Please select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <input
+        *ngSwitchCase="'date'"
+        type="date"
+        [formControlName]="formItem.title"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+    </div>
+  </div>
+  <button
+    type="submit"
+    [disabled]="!filterForm.valid"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  >
+    Filter
+  </button>
+</form>

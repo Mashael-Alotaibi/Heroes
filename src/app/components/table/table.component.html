@@ -1,0 +1,39 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <h1 class="text-xs text-gray-700 uppercase">Heroes</h1>
+  <input
+    type="text"
+    [(ngModel)]="searchName"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+    placeholder="search name"
+  />
+  <table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Phone</th>
+        <th scope="col" class="px-6 py-3">Email</th>
+        <th scope="col" class="px-6 py-3">Date</th>
+        <th scope="col" class="px-6 py-3">Country</th>
+        <th scope="col" class="px-6 py-3">company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="bg-white border-b"
+        *ngFor="let hero of heroes | filter: searchName"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+        >
+          {{ hero.name }}
+        </th>
+        <td class="px-6 py-4">{{ hero.phone }}</td>
+        <td class="px-6 py-4">{{ hero.email }}</td>
+        <td class="px-6 py-4">{{ hero.date }}</td>
+        <td class="px-6 py-4">{{ hero.country }}</td>
+        <td class="px-6 py-4">{{ hero.company }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
